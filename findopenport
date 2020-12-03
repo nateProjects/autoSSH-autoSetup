@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# Finds 2 open unused ports
+# /usr/bin/findopenport
+
+comm -23 <(seq 49152 65535 | sort) <(/usr/sbin/ss -Htan | awk '{print $4}' | cut -d':' -f2 | sort -u) | shuf | head -n 2
